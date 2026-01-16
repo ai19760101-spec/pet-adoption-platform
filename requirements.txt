@@ -1,0 +1,8 @@
+# 寵物領養平台後端依賴
+fastapi
+uvicorn
+python-dotenv
+pydantic[email]
+email-validator
+python-multipart
+httpx
