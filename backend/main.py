@@ -5,6 +5,14 @@ FastAPI 應用程式入口
 啟動方式：
   uvicorn main:app --reload --port 8000
 """
+  uvicorn main:app --reload --port 8000
+"""
+import sys
+import os
+
+# 將當前目錄加入 Python Path，確保 Vercel 能正確導入同目錄模組
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
