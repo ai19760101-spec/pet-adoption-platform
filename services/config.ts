@@ -30,7 +30,11 @@ export async function fetchApi<T>(
 
     if (!response.ok) {
         const error = await response.json().catch(() => ({ detail: '請求失敗' }));
-        throw new Error(error.detail || `HTTP ${response.status}`);
+        let errorMessage = error.detail || `HTTP ${response.status}`;
+        if (error.traceback) {
+            errorMessage += ` -- TRACEBACK: ${error.traceback}`;
+        }
+        throw new Error(errorMessage);
     }
 
     return response.json();
